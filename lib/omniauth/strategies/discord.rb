@@ -8,11 +8,11 @@ module OmniAuth
       option :name, 'discord'
 
       option :client_options,
-             site: 'https://discordapp.com/api',
+             site: 'https://discord.com/api',
              authorize_url: 'oauth2/authorize',
              token_url: 'oauth2/token'
 
-      option :authorize_options, %i[scope permissions]
+      option :authorize_options, %i[scope permissions prompt]
 
       uid { raw_info['id'] }
 
@@ -36,7 +36,7 @@ module OmniAuth
 
       def callback_url
         # Discord does not support query parameters
-        options[:callback_url] || (full_host + script_name + callback_path)
+        options[:callback_url] || (full_host + callback_path)
       end
 
       def authorize_params
