@@ -12,7 +12,7 @@ module OmniAuth
              authorize_url: 'oauth2/authorize',
              token_url: 'oauth2/token'
 
-      option :authorize_options, %i[scope permissions prompt]
+      option :authorize_options, %i[scope permissions prompt guild_id disable_guild_select]
 
       uid { raw_info['id'] }
 
