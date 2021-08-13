@@ -22,9 +22,9 @@ module OmniAuth
           email: raw_info['verified'] ? raw_info['email'] : nil,
           image: "https://cdn.discordapp.com/avatars/#{raw_info['id']}/#{raw_info['avatar']}",
           guild: {
-            id: raw_guild_info['id'],
-            name: raw_guild_info['name'],
-            roles: raw_guild_info['roles']
+            id: raw_guild_info&.dig('id'),
+            name: raw_guild_info&.dig('name'),
+            roles: raw_guild_info&.dig('roles')
           }
         }
       end
@@ -41,7 +41,7 @@ module OmniAuth
       end
 
       def raw_guild_info
-        @raw_guild_info ||= access_token.params['guild']
+        @raw_guild_info ||= access_token.params&.dig('guild')
       end
 
       def callback_url
