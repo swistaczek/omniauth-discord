@@ -13,6 +13,8 @@ module OmniAuth
              token_url: 'oauth2/token'
 
       option :authorize_options, %i[scope permissions prompt guild_id disable_guild_select]
+      
+      option :provider_ignores_state, true
 
       uid { raw_info['id'] }
 
